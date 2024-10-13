@@ -126,50 +126,53 @@ Refactorability is the ease with which code can be improved, modified, or extend
 without introducing defects. This pillar focuses on the long-term maintainability 
 of the codebase.
 
-Things that we can do to make our code refactorable.
+Things that we can do to make our code refactorable:
 
 - Isolated side effects
 - Tests
 - Static types
+- Rule of Three
 
 A side effect is when a function or module modifies data outside the scope of 
-itself. For example, writing data to a disk, changing a global variable, or 
-printing something to the terminal. 
+itself, for example, writing data to a disk, changing a global variable, or printing 
+something to the terminal. 
 
-A program are instructions that a computer executes which take data in and produce 
-data out. If a program has no side effects at all then it's a black box. 
+A program consists of instructions that a computer executes to take data in and produce 
+data out. If a program has no side effects at all, then it's a black box. 
 
-A program isn't useful if there's no data going out. But, for a program to produce 
-data it has to modify something in the world outside itself. For this reason we 
-need side effects, but we also need to isolate them.
+While side effects are necessary to make a program useful (since it has to modify 
+something in the outside world), they should be isolated.
 
-Side effects make our code hard to test, because if a function's execution modifies 
-some data that another function depends on then we can't be sure that a function 
-will always give the same output with the same given input.
+Side effects make code hard to test, because if a function's execution modifies 
+some data that another function depends on, we can't be sure that the function will 
+always give the same output with the same input.
 
-Side effects introduce coupling between otherwise reusable modules. If module A 
-modifies some global state that module B depends on, then A has to be run before B.
+Side effects also introduce coupling between otherwise reusable modules. If module 
+A modifies global state that module B depends on, then A must be run before B.
 
-Side effects make our system unpredictable. If any function or module can manipulate 
-the state of the application, then we can't be sure how us updating one module will 
-affect the whole system.
+Side effects make systems unpredictable. If any function or module can manipulate 
+the application's state, it becomes difficult to predict how changing one part will 
+affect the entire system.
 
-We isolate side effects by making one central place to update global state of our 
-application.
+**To manage side effects**, isolate them by creating a central place to update the 
+global state of your application.
 
-Best Practices:
+**The Rule of Three**: 
+Don't refactor code until it's been duplicated at least twice. The first time is 
+fine, the second time you can copy, but the third time, it's time to refactor. 
+This helps avoid premature optimization and unnecessary abstraction.
 
-- Loose Coupling: Design components that are independent of each other, so changes 
-in one area don’t ripple through the entire codebase.
-
-- High Cohesion: Group related functionalities together, ensuring that each module 
-or class has a clear, singular purpose.
-
-- Code Smells: Regularly check and refactor code to eliminate code smells such as 
-long methods, large classes, and unnecessary complexity.
-
-- Version Control: Use version control systems like Git to track changes and facilitate 
-collaboration and refactoring.
+**Best Practices:**
+- **Loose Coupling**: Design components to be independent of each other, so changes 
+  in one area don’t ripple through the entire codebase.
+- **High Cohesion**: Group related functionalities together, ensuring that each 
+  module or class has a clear, singular purpose.
+- **Code Smells**: Regularly check and refactor code to eliminate code smells such 
+  as long methods, large classes, and unnecessary complexity.
+- **Version Control**: Use systems like Git to track changes and facilitate collaboration 
+  and refactoring.
+- **Rule of Three**: Apply refactoring when the same logic or code is duplicated 
+  three times, ensuring patterns are worth abstracting without premature optimization.
 
 ### <a name='Reliability'></a>Reliability
 
