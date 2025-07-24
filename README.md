@@ -1,42 +1,46 @@
 # Conventions, Standards and Guidelines
 
 This repository contains a comprehensive set of conventions, standards and
-guidelines that I have been using across numerous projects mainly in Javascript.
+guidelines that I have been using across numerous projects mainly in `TypeScript`
+and `Vue`.
 
 These are not strict rules but rather guidelines to help me write better code.
 In certain cases, some guidelines may be broken. They may also change over time
 based on trends, tools, platforms, or technologies.
 
-<!-- vscode-markdown-toc -->
-* [Introduction](#Introduction)
-* [Pillars of Quality Code](#PillarsofQualityCode)
-	* [Readability](#Readability)
-	* [Reusability](#Reusability)
-	* [Refactorability (Maintainability)](#RefactorabilityMaintainability)
-	* [Reliability](#Reliability)
-	* [Efficiency](#Efficiency)
-* [Core Programming Concepts](#CoreProgrammingConcepts)
-	* [Component-based Architecture](#Component-basedArchitecture)
-	* [Model, View and Controller (MVC)](#ModelViewandControllerMVC)
-* [General Principle](#GeneralPrinciple)
-	* [File Naming](#FileNaming)
-	* [Directory Structure](#DirectoryStructure)
-	* [Variable and Function Naming](#VariableandFunctionNaming)
-	* [Function or Method Best Practices](#FunctionorMethodBestPractices)
-* [RESTful API](#RESTfulAPI)
-	* [endpoint](#endpoint)
-	* [response](#response)
-	* [error](#error)
-* [Formatting and Styling](#FormattingandStyling)
-* [ECMA Script 6 (ES6) or Javascript and Nodejs](#ECMAScript6ES6orJavascriptandNodejs)
-	* [Path](#Path)
-* [Vuejs (Includes HTML and CSS)](#VuejsIncludesHTMLandCSS)
-* [Tooling, IDE Extensions and Configurations](#ToolingIDEExtensionsandConfigurations)
-	* [Setting Up Linter](#SettingUpLinter)
-	* [Skipping A Rule](#SkippingARule)
-* [Version Control](#VersionControl)
-* [Conclusion](#Conclusion)
-* [Further Readings and Referrences](#FurtherReadingsandReferrences)
+<!-- TOC -->
+
+- [Conventions, Standards and Guidelines](#conventions-standards-and-guidelines)
+    - [Introduction](#introduction)
+        - [Purpose](#purpose)
+    - [Pillars of Quality Code](#pillars-of-quality-code)
+        - [Readability](#readability)
+        - [Reusability](#reusability)
+        - [Refactorability Maintainability](#refactorability-maintainability)
+        - [Reliability](#reliability)
+        - [Efficiency](#efficiency)
+    - [Core Programming Concepts](#core-programming-concepts)
+        - [Component-based Architecture](#component-based-architecture)
+        - [Model, View and Controller MVC](#model-view-and-controller-mvc)
+    - [General Principle](#general-principle)
+        - [File Naming](#file-naming)
+        - [Directory Structure](#directory-structure)
+        - [Variable and Function Naming](#variable-and-function-naming)
+        - [Function or Method Best Practices](#function-or-method-best-practices)
+    - [RESTful API](#restful-api)
+    - [Formatting and Styling](#formatting-and-styling)
+    - [ECMA Script 6 ES6 or Javascript and Nodejs](#ecma-script-6-es6-or-javascript-and-nodejs)
+        - [Path](#path)
+    - [Vuejs Includes HTML and CSS](#vuejs-includes-html-and-css)
+    - [Tooling, IDE Extensions and Configurations](#tooling-ide-extensions-and-configurations)
+        - [Setting Up Linter](#setting-up-linter)
+        - [Skipping A Rule](#skipping-a-rule)
+    - [Version Control](#version-control)
+    - [Conclusion](#conclusion)
+    - [Further Readings and Referrences](#further-readings-and-referrences)
+
+<!-- /TOC -->
+
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -49,6 +53,8 @@ based on trends, tools, platforms, or technologies.
 These conventions aim to promote code readability, consistency, and maintainability.
 They serve as a guide, not a set of strict rules, for writing clean and efficient code, enabling seamless collaboration among developers.
 
+### Purpose
+
 The purpose of having coding conventions, standards and guidelines are:
 
 - Uniform appearance to the codes written by different programmers and platforms.
@@ -56,8 +62,8 @@ The purpose of having coding conventions, standards and guidelines are:
 - Helps in code reuse and helps to detect errors easily.
 - Promotes sound programming practices and increases the efficiency of the programmers.
 
-Everything should be done automatically without any mental cognitive load. Nowdays
-we could take advantage of tooling and AI to do these things. Read more at
+Everything should be **done automatically** without any mental cognitive load. Nowdays
+we could take advantage of tooling such as linter, formatter, or AI to do these things. Read more at
 [tooling section](#tooling) to know how to set it up.
 
 ## <a name='PillarsofQualityCode'></a>Pillars of Quality Code
@@ -104,8 +110,8 @@ Best Practices:
 - **Modular Design**: Break down functionality into small, self-contained modules
 or functions that can be easily reused.
 
-- **DRY Principle (Don’t Repeat Yourself)**: Extract common functionality into
-reusable functions or classes.
+- **DRY Principle (Don’t Repeat Yourself)**: Extract common functionality that are repeated three times or more into
+reusable utility functions or classes.
 
 - **Parameterization**: Write functions and methods that are flexible through the
 use of parameters, allowing them to handle various use cases.
@@ -119,6 +125,8 @@ Code should **NOT** be reusable when,
 is better than a bad foundation.
 
 - The function or module are not expected to be reused in the near future.
+
+- The duplication is not more than two.
 
 ### <a name='RefactorabilityMaintainability'></a>Refactorability (Maintainability)
 
@@ -232,14 +240,11 @@ Software components have five common characteristics;
 
 2. **Extensibility**: Components combine with other components to create new behaviors.
 
-3. Replaceability
-Components with similar functionality can be swapped.
+3. **Replaceability**: Components with similar functionality can be swapped.
 
-4. Encapsulation
-Components are self-contained and expose functionality through interfaces while hiding the details of internal processes.
+4. **Encapsulation**: Components are self-contained and expose functionality through interfaces while hiding the details of internal processes.
 
-5. Independence
-Components have minimal dependencies on other components and can operate in different environments and contexts.
+5. **Independence**: Components have minimal dependencies on other components and can operate in different environments and contexts.
 
 ### <a name='ModelViewandControllerMVC'></a>Model, View and Controller (MVC)
 
@@ -258,12 +263,33 @@ TBD
 - Directory name should already convey the files within.
 
 Common directory names are:
+  - **apps**: if a project have more than one applications (e.g: client, server, web, etc),
+    we group them under `apps` and uses workspace to manage them
   - **bin**: contains executable binary files or programs
-  - **data**: contains hard-coded data files in various format such as csv, json, etc
-  - **dist**: contains compiled source and ready to be released
+  - **config**: contains the application configuration files
+  - **data**: contains hard-coded data files in various format such as csv, json,
+    etc that are loaded at runtime
+  - **dist**: contains compiled source and ready to be released, ignored by git
+  - **docs**: contains the source documentations
+  - **logs**: contain log files, ignored by git
   - **public**: contains static files and commonly served by http server
-  - **src**: contains the application source files that are going to be compiled
+  - **res** or **resources**: contains all the non-code resources
   - **scripts**: contains scripts files
+  - **src**: contains the application source files that are going to be compiled
+  - **temp**: contains temporary files, ignored by git
+  - **test**: contains the application tests such as unit tests, integration tests, etc
+  - **uploads**: contains uploaded files, ignored by git
+  - **vendor**: contains third-party libraries
+
+Some common directory names specifically for web applications are:
+  - **src/assets**: similar to `res`
+  - **src/components**: contains the application components
+  - **src/lib**: contains the application libraries
+  - **src/pages**: contains the application pages or views
+  - **src/router**: contains the application router
+  - **src/services**: contains the application services
+  - **src/store**: contains the application store
+  - **src/utils**: contains the application utils
 
 ### <a name='VariableandFunctionNaming'></a>Variable and Function Naming
 
@@ -344,19 +370,8 @@ Common directory names are:
 
 ## <a name='RESTfulAPI'></a>RESTful API
 
-TBD
-
-### <a name='endpoint'></a>endpoint
-
-TBD
-
-### <a name='response'></a>response
-
-TBD
-
-### <a name='error'></a>error
-
-TBD
+Please refer to [Rapid API Learning](https://rapidapi.com/learn/rest) for
+comprehensive information about RESTful API.
 
 ## <a name='FormattingandStyling'></a>Formatting and Styling
 
@@ -418,3 +433,4 @@ TBD
 - https://conventionalcommits.org/
 - https://semver.org/
 - https://keepachangelog.com/
+- https://rapidapi.com/learn/rest
