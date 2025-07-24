@@ -3,9 +3,9 @@
 This repository contains a comprehensive set of conventions, standards and
 guidelines that I have been using across numerous projects mainly in Javascript.
 
-These are not strict rules but rather guidelines to help me write better code. 
-In certain cases, some guidelines may be broken. They may also change over time 
-based on trends, tools, platforms, or technology.ines
+These are not strict rules but rather guidelines to help me write better code.
+In certain cases, some guidelines may be broken. They may also change over time
+based on trends, tools, platforms, or technologies.
 
 <!-- vscode-markdown-toc -->
 * [Introduction](#Introduction)
@@ -46,7 +46,7 @@ based on trends, tools, platforms, or technology.ines
 
 ## <a name='Introduction'></a>Introduction
 
-These conventions aim to promote code readability, consistency, and maintainability. 
+These conventions aim to promote code readability, consistency, and maintainability.
 They serve as a guide, not a set of strict rules, for writing clean and efficient code, enabling seamless collaboration among developers.
 
 The purpose of having coding conventions, standards and guidelines are:
@@ -56,8 +56,8 @@ The purpose of having coding conventions, standards and guidelines are:
 - Helps in code reuse and helps to detect errors easily.
 - Promotes sound programming practices and increases the efficiency of the programmers.
 
-Everything should be done automatically without any mental cognitive load. Nowdays 
-we could take advantage of tooling and AI to do these things. Read more at 
+Everything should be done automatically without any mental cognitive load. Nowdays
+we could take advantage of tooling and AI to do these things. Read more at
 [tooling section](#tooling) to know how to set it up.
 
 ## <a name='PillarsofQualityCode'></a>Pillars of Quality Code
@@ -72,58 +72,58 @@ Five pillars of quality code are:
 
 ### <a name='Readability'></a>Readability
 
-Readability refers to how easily other developers (or even your future self) can 
-understand the code. Code that is easy to read reduces the time required to grasp 
+Readability refers to how easily other developers (or even your future self) can
+understand the code. Code that is easy to read reduces the time required to grasp
 its functionality and logic.
 
 Best Practices:
 
-- **Clear Naming Conventions**: Use meaningful variable, function, and class 
+- **Clear Naming Conventions**: Use meaningful variable, function, and class
 names that convey intent.
 
-- **Consistent Formatting**: Follow a consistent style guide for indentation, 
+- **Consistent Formatting**: Follow a consistent style guide for indentation,
 spacing, and braces.
 
-- **Commenting and Documentation**: Provide comments only where necessary that 
+- **Commenting and Documentation**: Provide comments only where necessary that
 explains "why". Focus more on writing self-explanatory code.
 
-- **Avoid Deep Nesting**: Limit the levels of indentation to maximum of two to make 
-code more accessible and easier to follow. Use guard clause to reduce number of 
+- **Avoid Deep Nesting**: Limit the levels of indentation to maximum of two to make
+code more accessible and easier to follow. Use guard clause to reduce number of
 nesting.
 
 ### <a name='Reusability'></a>Reusability
 
-Reusability is the ease with which code components can be used across different 
-parts of the application or even in different projects. Reusability allows us to 
-express new ideas with little pieces of the past. 
+Reusability is the ease with which code components can be used across different
+parts of the application or even in different projects. Reusability allows us to
+express new ideas with little pieces of the past.
 
 Writing reusable code helps reduce redundancy and promotes consistency.
 
 Best Practices:
 
-- **Modular Design**: Break down functionality into small, self-contained modules 
+- **Modular Design**: Break down functionality into small, self-contained modules
 or functions that can be easily reused.
 
-- **DRY Principle (Don’t Repeat Yourself)**: Extract common functionality into 
+- **DRY Principle (Don’t Repeat Yourself)**: Extract common functionality into
 reusable functions or classes.
 
-- **Parameterization**: Write functions and methods that are flexible through the 
+- **Parameterization**: Write functions and methods that are flexible through the
 use of parameters, allowing them to handle various use cases.
 
-- **Use of Libraries**: Where applicable, use well-established libraries or frameworks 
+- **Use of Libraries**: Where applicable, use well-established libraries or frameworks
 that provide reusable functions or components.
 
 Code should **NOT** be reusable when,
 
-- If you can't define a good API yet, don't create a separate module . Duplication 
+- If you can't define a good API yet, don't create a separate module . Duplication
 is better than a bad foundation.
 
 - The function or module are not expected to be reused in the near future.
 
 ### <a name='RefactorabilityMaintainability'></a>Refactorability (Maintainability)
 
-Refactorability is the ease with which code can be improved, modified, or extended 
-without introducing defects. This pillar focuses on the long-term maintainability 
+Refactorability is the ease with which code can be improved, modified, or extended
+without introducing defects. This pillar focuses on the long-term maintainability
 of the codebase.
 
 Things that we can do to make our code refactorable:
@@ -133,88 +133,88 @@ Things that we can do to make our code refactorable:
 - Static types
 - Rule of Three
 
-A side effect is when a function or module modifies data outside the scope of 
-itself, for example, writing data to a disk, changing a global variable, or printing 
-something to the terminal. 
+A side effect is when a function or module modifies data outside the scope of
+itself, for example, writing data to a disk, changing a global variable, or printing
+something to the terminal.
 
-A program consists of instructions that a computer executes to take data in and produce 
-data out. If a program has no side effects at all, then it's a black box. 
+A program consists of instructions that a computer executes to take data in and produce
+data out. If a program has no side effects at all, then it's a black box.
 
-While side effects are necessary to make a program useful (since it has to modify 
+While side effects are necessary to make a program useful (since it has to modify
 something in the outside world), they should be isolated.
 
-Side effects make code hard to test, because if a function's execution modifies 
-some data that another function depends on, we can't be sure that the function will 
+Side effects make code hard to test, because if a function's execution modifies
+some data that another function depends on, we can't be sure that the function will
 always give the same output with the same input.
 
-Side effects also introduce coupling between otherwise reusable modules. If module 
+Side effects also introduce coupling between otherwise reusable modules. If module
 A modifies global state that module B depends on, then A must be run before B.
 
-Side effects make systems unpredictable. If any function or module can manipulate 
-the application's state, it becomes difficult to predict how changing one part will 
+Side effects make systems unpredictable. If any function or module can manipulate
+the application's state, it becomes difficult to predict how changing one part will
 affect the entire system.
 
-**To manage side effects**, isolate them by creating a central place to update the 
+**To manage side effects**, isolate them by creating a central place to update the
 global state of your application.
 
-**The Rule of Three**: 
-Don't refactor code until it's been duplicated at least twice. The first time is 
-fine, the second time you can copy, but the third time, it's time to refactor. 
+**The Rule of Three**:
+Don't refactor code until it's been duplicated at least twice. The first time is
+fine, the second time you can copy, but the third time, it's time to refactor.
 This helps avoid premature optimization and unnecessary abstraction.
 
 **Best Practices:**
-- **Loose Coupling**: Design components to be independent of each other, so changes 
+- **Loose Coupling**: Design components to be independent of each other, so changes
   in one area don’t ripple through the entire codebase.
-- **High Cohesion**: Group related functionalities together, ensuring that each 
+- **High Cohesion**: Group related functionalities together, ensuring that each
   module or class has a clear, singular purpose.
-- **Code Smells**: Regularly check and refactor code to eliminate code smells such 
+- **Code Smells**: Regularly check and refactor code to eliminate code smells such
   as long methods, large classes, and unnecessary complexity.
-- **Version Control**: Use systems like Git to track changes and facilitate collaboration 
+- **Version Control**: Use systems like Git to track changes and facilitate collaboration
   and refactoring.
-- **Rule of Three**: Apply refactoring when the same logic or code is duplicated 
+- **Rule of Three**: Apply refactoring when the same logic or code is duplicated
   three times, ensuring patterns are worth abstracting without premature optimization.
 
 ### <a name='Reliability'></a>Reliability
 
-Reliability is the degree to which code functions correctly and consistently under 
-expected conditions. Reliable code is robust and handles edge cases, errors, and 
+Reliability is the degree to which code functions correctly and consistently under
+expected conditions. Reliable code is robust and handles edge cases, errors, and
 unexpected inputs gracefully.
 
 Best Practices:
 
-- **Error Handling**: Implement comprehensive error handling to manage exceptions 
+- **Error Handling**: Implement comprehensive error handling to manage exceptions
 and unexpected situations without crashing.
 
-- **Unit Testing**: Write unit tests to ensure that individual parts of the code 
+- **Unit Testing**: Write unit tests to ensure that individual parts of the code
 work as expected.
 
-- **Integration Testing**: Use integration tests to verify that different modules 
+- **Integration Testing**: Use integration tests to verify that different modules
 or services interact correctly.
 
-- **Input Validation**: Always validate inputs to ensure they meet the expected 
+- **Input Validation**: Always validate inputs to ensure they meet the expected
 criteria before processing.
 
 ### <a name='Efficiency'></a>Efficiency
 
-Efficiency refers to the optimization of code in terms of performance and resource 
-utilization. Efficient code executes quickly and uses minimal resources, such as 
+Efficiency refers to the optimization of code in terms of performance and resource
+utilization. Efficient code executes quickly and uses minimal resources, such as
 CPU, memory, and network bandwidth.
 
 Best Practices:
 
-- **Optimized Algorithms**: Choose or develop algorithms that are efficient in terms 
+- **Optimized Algorithms**: Choose or develop algorithms that are efficient in terms
 of time and space complexity.
 
-- **Lazy Loading**: Load resources only when they are needed to reduce initial load 
+- **Lazy Loading**: Load resources only when they are needed to reduce initial load
 time and memory usage.
 
-- **Tree Shaking**: Remove unused code from the bundle. Code that is not imported or 
+- **Tree Shaking**: Remove unused code from the bundle. Code that is not imported or
 used is not included in the final bundle, resulting in a smaller codebase.
 
-- **Caching**: Implement caching strategies to store frequently accessed data, reducing 
+- **Caching**: Implement caching strategies to store frequently accessed data, reducing
 the need for repeated computations or database queries.
 
-- **Profiling and Optimization**: Regularly profile the application to identify 
+- **Profiling and Optimization**: Regularly profile the application to identify
 and optimize performance bottlenecks.
 
 ## <a name='CoreProgrammingConcepts'></a>Core Programming Concepts
@@ -248,7 +248,7 @@ TBD
 
 ## <a name='GeneralPrinciple'></a>General Principle
 
-### <a name='FileNaming'></a>File Naming 
+### <a name='FileNaming'></a>File Naming
 
 - Use `kebab-case` for file names
 - Use `LF` instead of ~~`CRLF`~~ for line ending
@@ -295,7 +295,7 @@ Common directory names are:
 
 7. **Avoid Reserved Words**
    - Do not use JavaScript reserved words for variable names (e.g., `class`, `enum`, `default`).
-   
+
 
 ### <a name='FunctionorMethodBestPractices'></a>Function or Method Best Practices
 
@@ -303,11 +303,11 @@ Common directory names are:
 
 - Guard Clause, don't write `else` unless it is a middleware.
 
-- Consider extracting nested logic into separate functions. More than two levels of nesting can imply poor performance (in a loop), and it can be especially hard to read in long conditionals. 
+- Consider extracting nested logic into separate functions. More than two levels of nesting can imply poor performance (in a loop), and it can be especially hard to read in long conditionals.
 
-- **Limit Number of Function Arguments** 
-    - Limit number of arguments between 1-3. 
-    - 0 arguments implies side effect. 
+- **Limit Number of Function Arguments**
+    - Limit number of arguments between 1-3.
+    - 0 arguments implies side effect.
 
 - **Use Underscore for Private or Unused Variables**
    - When dealing with private variables (especially in classes or modules), prefix them with an underscore (e.g., `_privateData`).
@@ -326,7 +326,7 @@ Common directory names are:
 
      ```javascript
      const numbers = [1, 2, 3]
-    
+
      // We only care about the index, not the value.
      numbers.forEach((_value, index) => {
         console.log(index); // Outputs: 0, 1, 2
@@ -337,7 +337,7 @@ Common directory names are:
 
      ```javascript
      const colors = ['red', 'green', 'blue']
-      
+
      // Destructure the array, but only the second element is used.
      const [_firstColor, secondColor, _thirdColor] = colors
      ```
@@ -360,7 +360,7 @@ TBD
 
 ## <a name='FormattingandStyling'></a>Formatting and Styling
 
-Formatting and styling should be done automatically using linter. See Tooling 
+Formatting and styling should be done automatically using linter. See Tooling
 section for more information how to set it up.
 
 - Use **spaces** instead of **tabs** for indentation. Use two spaces to indent.
@@ -376,8 +376,8 @@ section for more information how to set it up.
   either npm, cdn link or importmap.
 - Include file extension on file path when import a file, unless to an `index.js`<br>
   `import { formatDate } from '~/utils/format-date.js'`<br>
-  `import { formatDate } from '~/utils // utils directory has index.js` 
-  
+  `import { formatDate } from '~/utils // utils directory has index.js`
+
 ## <a name='VuejsIncludesHTMLandCSS'></a>Vuejs (Includes HTML and CSS)
 
 Tailwindcss principles and style guides:
@@ -386,7 +386,7 @@ Tailwindcss principles and style guides:
 
 ## <a name='ToolingIDEExtensionsandConfigurations'></a>Tooling, IDE Extensions and Configurations
 
-Currently I'm using [eslint](https://eslint.org) to lint and style my code. 
+Currently I'm using [eslint](https://eslint.org) to lint and style my code.
 
 - [antfu](https://github.com/antfu/eslint-config)
 
