@@ -1,5 +1,12 @@
 # Conventions, Standards and Guidelines
 
+<p>
+  <a href="https://github.com/acfatah/conventions-standards-and-guidelines/commits/main">
+    <img
+      alt="GitHub last commit (by committer)"
+      src="https://img.shields.io/github/last-commit/acfatah/conventions-standards-and-guidelines?display_timestamp=committer&style=flat-square"></a>
+</p>
+
 This repository contains a comprehensive set of conventions, standards and
 guidelines that I have been using across numerous projects mainly in `TypeScript`
 and `Vue`.
