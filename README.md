@@ -62,16 +62,16 @@ They serve as a guide, not a set of strict rules, for writing clean and efficien
 
 ### Purpose
 
-The purpose of having coding conventions, standards and guidelines are:
+The purpose of having coding conventions, standards, and guidelines is to:
 
-- Uniform appearance to the codes written by different programmers and platforms.
-- Improves readability, and maintainability of the code and reduces complexity.
-- Helps in code reuse and helps to detect errors easily.
-- Promotes sound programming practices and increases the efficiency of the programmers.
+- Provide a uniform appearance to code written by different programmers and across different platforms.
+- Improve code readability and maintainability while reducing complexity.
+- Facilitate code reuse and make it easier to detect errors.
+- Promote sound programming practices and increase programmer efficiency.
 
-Everything should be **done automatically** without any mental cognitive load. Nowdays
-we could take advantage of tooling such as linter, formatter, or AI to do these things. Read more at
-[tooling section](#tooling) to know how to set it up.
+Everything should be **done automatically** without any mental cognitive load. Nowadays,
+we can take advantage of tools such as linters, formatters, or AI to handle these things. Read more in the
+[tooling section](#tooling) to learn how to set it up.
 
 ## <a name='PillarsofQualityCode'></a>Pillars of Quality Code
 
@@ -148,41 +148,41 @@ Things that we can do to make our code refactorable:
 - Static types
 - Rule of Three
 
-A side effect is when a function or module modifies data outside the scope of
-itself, for example, writing data to a disk, changing a global variable, or printing
+A side effect occurs when a function or module modifies data outside its own scope,
+for example, writing data to a disk, changing a global variable, or printing
 something to the terminal.
 
 A program consists of instructions that a computer executes to take data in and produce
-data out. If a program has no side effects at all, then it's a black box.
+data out. If a program has no side effects, it's essentially a black box.
 
 While side effects are necessary to make a program useful (since it has to modify
-something in the outside world), they should be isolated.
+something in the outside world), they should be carefully isolated.
 
-Side effects make code hard to test, because if a function's execution modifies
-some data that another function depends on, we can't be sure that the function will
-always give the same output with the same input.
+Side effects make code hard to test because if a function's execution modifies
+some data that another function depends on, we can't be certain that the function will
+always produce the same output given the same input.
 
 Side effects also introduce coupling between otherwise reusable modules. If module
-A modifies global state that module B depends on, then A must be run before B.
+A modifies global state that module B depends on, then A must be executed before B.
 
 Side effects make systems unpredictable. If any function or module can manipulate
 the application's state, it becomes difficult to predict how changing one part will
 affect the entire system.
 
-**To manage side effects**, isolate them by creating a central place to update the
+**To manage side effects**, isolate them by creating a centralized location to update the
 global state of your application.
 
 **The Rule of Three**:
-Don't refactor code until it's been duplicated at least twice. The first time is
-fine, the second time you can copy, but the third time, it's time to refactor.
-This helps avoid premature optimization and unnecessary abstraction.
+Don't refactor code until it's been duplicated at least twice. The first instance is
+acceptable, the second time you might copy, but by the third occurrence, it's time to refactor.
+This approach helps avoid premature optimization and unnecessary abstraction.
 
 **Best Practices:**
-- **Loose Coupling**: Design components to be independent of each other, so changes
-  in one area don’t ripple through the entire codebase.
-- **High Cohesion**: Group related functionalities together, ensuring that each
+- **Loose Coupling**: Design components to be independent of each other so that changes
+  in one area don't ripple through the entire codebase.
+- **High Cohesion**: Group related functionality together, ensuring that each
   module or class has a clear, singular purpose.
-- **Code Smells**: Regularly check and refactor code to eliminate code smells such
+- **Code Smells**: Regularly check for and refactor code to eliminate code smells such
   as long methods, large classes, and unnecessary complexity.
 - **Version Control**: Use systems like Git to track changes and facilitate collaboration
   and refactoring.
