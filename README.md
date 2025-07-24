@@ -27,8 +27,8 @@ based on trends, tools, platforms, or technologies.
         - [Reliability](#reliability)
         - [Efficiency](#efficiency)
     - [Core Programming Concepts](#core-programming-concepts)
+        - [SOLID Principles](#solid-principles)
         - [Component-based Architecture](#component-based-architecture)
-        - [Model, View and Controller MVC](#model-view-and-controller-mvc)
     - [General Principle](#general-principle)
         - [File Naming](#file-naming)
         - [Directory Structure](#directory-structure)
@@ -40,9 +40,8 @@ based on trends, tools, platforms, or technologies.
         - [Path](#path)
     - [Vuejs Includes HTML and CSS](#vuejs-includes-html-and-css)
     - [Tooling, IDE Extensions and Configurations](#tooling-ide-extensions-and-configurations)
-        - [Setting Up Linter](#setting-up-linter)
-        - [Skipping A Rule](#skipping-a-rule)
-    - [Version Control](#version-control)
+        - [Setting Up Linter and Formatter](#setting-up-linter-and-formatter)
+    - [Software Versioning and Version Control](#software-versioning-and-version-control)
     - [Conclusion](#conclusion)
     - [Further Readings and Referrences](#further-readings-and-referrences)
 
@@ -94,6 +93,10 @@ Best Practices:
 - **Clear Naming Conventions**: Use meaningful variable, function, and class
 names that convey intent.
 
+  - Use **camelCase** for variable and function names.
+  - Use **PascalCase** for type and class names.
+  - Use **SNAKE_CASE** for constant names.
+
 - **Consistent Formatting**: Follow a consistent style guide for indentation,
 spacing, and braces.
 
@@ -101,7 +104,7 @@ spacing, and braces.
 explains "why". Focus more on writing self-explanatory code.
 
 - **Avoid Deep Nesting**: Limit the levels of indentation to maximum of two to make
-code more accessible and easier to follow. Use guard clause to reduce number of
+code more accessible and easier to follow. Use [guard clause](https://en.wikipedia.org/wiki/Guard_(computer_science)) to reduce number of
 nesting.
 
 ### <a name='Reusability'></a>Reusability
@@ -133,7 +136,7 @@ is better than a bad foundation.
 
 - The function or module are not expected to be reused in the near future.
 
-- The duplication is not more than two.
+- The duplication is **NOT** more than two. (See *Rule of Three* below)
 
 ### <a name='RefactorabilityMaintainability'></a>Refactorability (Maintainability)
 
@@ -234,6 +237,10 @@ and optimize performance bottlenecks.
 
 ## <a name='CoreProgrammingConcepts'></a>Core Programming Concepts
 
+### <a name='solid-principles'></a>SOLID Principles
+
+TBD
+
 ### <a name='Component-basedArchitecture'></a>Component-based Architecture
 
 Think of a component as a Lego block.
@@ -253,10 +260,6 @@ Software components have five common characteristics;
 
 5. **Independence**: Components have minimal dependencies on other components and can operate in different environments and contexts.
 
-### <a name='ModelViewandControllerMVC'></a>Model, View and Controller (MVC)
-
-TBD
-
 
 ## <a name='GeneralPrinciple'></a>General Principle
 
@@ -265,7 +268,7 @@ TBD
 - Use `kebab-case` for file names
 - Use `LF` instead of ~~`CRLF`~~ for line ending
 
-### <a name='DirectoryStructure'></a>Directory Structure
+### <a name='directory-structure'></a>Directory Structure
 
 - Directory name should already convey the files within.
 
@@ -290,10 +293,11 @@ Common directory names are:
 
 Some common directory names specifically for web applications are:
   - **src/assets**: similar to `res`
+  - **src/composables** or **src/hooks**: contains the application hooks (in Vue, it's commonly known as composables)
   - **src/components**: contains the application components
   - **src/lib**: contains the application libraries
   - **src/pages**: contains the application pages or views
-  - **src/router**: contains the application router
+  - **src/router** or **src/routes**: contains the application router or routes
   - **src/services**: contains the application services
   - **src/store**: contains the application store
   - **src/utils**: contains the application utils
@@ -397,34 +401,48 @@ section for more information how to set it up.
 - Use relative path when related to browser so it can be imported using
   either npm, cdn link or importmap.
 - Include file extension on file path when import a file, unless to an `index.js`<br>
-  `import { formatDate } from '~/utils/format-date.js'`<br>
-  `import { formatDate } from '~/utils // utils directory has index.js`
+  `import { formatDate } from 'src/utils/format-date.js'`<br>
+  `import { formatDate } from 'src/utils   // utils directory has index.js`
 
 ## <a name='VuejsIncludesHTMLandCSS'></a>Vuejs (Includes HTML and CSS)
 
 Tailwindcss principles and style guides:
 
-- [eslint-plugin-tailwindcss](https://github.com/francoismassart/eslint-plugin-tailwindcss)
+- [eslint-plugin-better-tailwindcss](https://github.com/schoero/eslint-plugin-better-tailwindcss)
 
 ## <a name='ToolingIDEExtensionsandConfigurations'></a>Tooling, IDE Extensions and Configurations
 
-Currently I'm using [eslint](https://eslint.org) to lint and style my code.
+Currently I'm using [eslint](https://eslint.org) (without Prettier) to lint and format my code following the antfu/eslint-config configuration. Folowing the link below for more information.
 
-- [antfu](https://github.com/antfu/eslint-config)
+- [antfu/eslint-config](https://github.com/antfu/eslint-config)
 
-### <a name='SettingUpLinter'></a>Setting Up Linter
+By using pre-commit hooks, we can automatically lint and guard our code from code smells before committing. Currently using [simple-git-hooks](https://github.com/indrajeetmishra/simple-git-hooks).
 
-TBD
+### <a name='SettingUpLinter'></a>Setting Up Linter and Formatter
 
-### <a name='SkippingARule'></a>Skipping A Rule
+- Install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) for vscode.
+- Install the `@commitlint/cli` and `@commitlint/config-conventional` packages.
+- Install the [simple-git-hooks](https://github.com/indrajeetmishra/simple-git-hooks). Need to run `npx simple-git-hooks` to initialize it and update configuration.
+  ```
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npm run precommit",
+    "commit-msg": "npm run commitlint --edit ${1}"
+  }
+  ```
 
-TBD
+## <a name='VersionControl'></a>Software Versioning and Version Control
 
-## <a name='VersionControl'></a>Version Control
+Follow the conventional versioning systems:
 
-TBD: Mention [conventional commit](https://www.conventionalcommits.org) message.
+- [Semantic Versioning](https://semver.org)
+- [Calendar Versioning](https://calver.org)
 
-TBD: Mention [semver](https://semver.org).
+Use [conventional commit](https://www.conventionalcommits.org) to write commit message. The advantage is that we can use tools like [changelogithub](https://github.com/antfu/changelogithub) to generate changelog based on commit messages.
 
 ## <a name='Conclusion'></a>Conclusion
 
