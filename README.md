@@ -18,43 +18,37 @@ based on trends, tools, platforms, or technologies.
 <!-- TOC -->
 
 - [Conventions, Standards and Guidelines](#conventions-standards-and-guidelines)
-    - [Introduction](#introduction)
-        - [Purpose](#purpose)
-    - [Pillars of Quality Code](#pillars-of-quality-code)
-        - [Readability](#readability)
-        - [Reusability](#reusability)
-        - [Refactorability Maintainability](#refactorability-maintainability)
-        - [Reliability](#reliability)
-        - [Efficiency](#efficiency)
-    - [Core Programming Concepts](#core-programming-concepts)
-        - [SOLID Principles](#solid-principles)
-        - [Component-based Architecture](#component-based-architecture)
-    - [General Principle](#general-principle)
-        - [File Naming](#file-naming)
-        - [Directory Structure](#directory-structure)
-        - [Variable and Function Naming](#variable-and-function-naming)
-        - [Function or Method Best Practices](#function-or-method-best-practices)
-    - [RESTful API](#restful-api)
-    - [Formatting and Styling](#formatting-and-styling)
-    - [ECMA Script 6 ES6 or Javascript and Nodejs](#ecma-script-6-es6-or-javascript-and-nodejs)
-        - [Path](#path)
-    - [Vuejs Includes HTML and CSS](#vuejs-includes-html-and-css)
-    - [Tooling, IDE Extensions and Configurations](#tooling-ide-extensions-and-configurations)
-        - [Setting Up Linter and Formatter](#setting-up-linter-and-formatter)
-    - [Software Versioning and Version Control](#software-versioning-and-version-control)
-    - [Conclusion](#conclusion)
-    - [Further Readings and Referrences](#further-readings-and-referrences)
+  - [Introduction](#introduction)
+    - [Purpose](#purpose)
+  - [Pillars of Quality Code](#pillars-of-quality-code)
+    - [Readability](#readability)
+    - [Reusability](#reusability)
+    - [Refactorability Maintainability](#refactorability-maintainability)
+    - [Reliability](#reliability)
+    - [Efficiency](#efficiency)
+  - [Core Programming Concepts](#core-programming-concepts)
+    - [SOLID Principles](#solid-principles)
+    - [Component-based Architecture](#component-based-architecture)
+  - [General Guidelines](#general-guidelines)
+    - [File Naming](#file-naming)
+    - [Directory Structure](#directory-structure)
+    - [Variable and Function Naming](#variable-and-function-naming)
+    - [Function or Method Best Practices](#function-or-method-best-practices)
+  - [RESTful API](#restful-api)
+  - [Formatting and Styling](#formatting-and-styling)
+  - [TypeScript, ECMA Script 6 ES6 or Javascript and Nodejs](#typescript-ecma-script-6-es6-or-javascript-and-nodejs)
+    - [Path Naming](#path-naming)
+  - [Vuejs Including HTML and CSS](#vuejs-including-html-and-css)
+  - [Commit Message Guidelines](#commit-message-guidelines)
+  - [Software Versioning and Version Control](#software-versioning-and-version-control)
+  - [Tooling, IDE Extensions and Configurations](#tooling-ide-extensions-and-configurations)
+    - [Setting Up Linter and Formatter](#setting-up-linter-and-formatter)
+  - [Conclusion](#conclusion)
+  - [Further Readings and Referrences](#further-readings-and-referrences)
 
 <!-- /TOC -->
 
-
-<!-- vscode-markdown-toc-config
-	numbering=false
-	autoSave=true
-	/vscode-markdown-toc-config -->
-<!-- /vscode-markdown-toc -->
-
-## <a name='Introduction'></a>Introduction
+## Introduction
 
 These conventions aim to promote code readability, consistency, and maintainability.
 They serve as a guide, not a set of strict rules, for writing clean and efficient code, enabling seamless collaboration among developers.
@@ -72,7 +66,7 @@ Everything should be **done automatically** without any mental cognitive load. N
 we can take advantage of tools such as linters, formatters, or AI to handle these things. Read more in the
 [tooling section](#tooling) to learn how to set it up.
 
-## <a name='PillarsofQualityCode'></a>Pillars of Quality Code
+## Pillars of Quality Code
 
 Five pillars of quality code are:
 
@@ -82,7 +76,7 @@ Five pillars of quality code are:
 4. **Reliability**
 5. **Efficiency**
 
-### <a name='Readability'></a>Readability
+### Readability
 
 Readability refers to how easily other developers (or even your future self) can
 understand the code. Code that is easy to read reduces the time required to grasp
@@ -95,7 +89,8 @@ names that convey intent.
 
   - Use **camelCase** for variable and function names.
   - Use **PascalCase** for type and class names.
-  - Use **SNAKE_CASE** for constant names.
+  - Use **UPPER_SNAKE_CASE** for constant names.
+  - Use **snake_case** for sql table names.
 
 - **Consistent Formatting**: Follow a consistent style guide for indentation,
 spacing, and braces.
@@ -107,7 +102,7 @@ explains "why". Focus more on writing self-explanatory code.
 code more accessible and easier to follow. Use [guard clause](https://en.wikipedia.org/wiki/Guard_(computer_science)) to reduce number of
 nesting.
 
-### <a name='Reusability'></a>Reusability
+### Reusability
 
 Reusability is the ease with which code components can be used across different
 parts of the application or even in different projects. Reusability allows us to
@@ -138,7 +133,7 @@ is better than a bad foundation.
 
 - The duplication is **NOT** more than two. (See *Rule of Three* below)
 
-### <a name='RefactorabilityMaintainability'></a>Refactorability (Maintainability)
+### Refactorability (Maintainability)
 
 Refactorability is the ease with which code can be improved, modified, or extended
 without introducing defects. This pillar focuses on the long-term maintainability
@@ -192,7 +187,7 @@ This approach helps avoid premature optimization and unnecessary abstraction.
 - **Rule of Three**: Apply refactoring when the same logic or code is duplicated
   three times, ensuring patterns are worth abstracting without premature optimization.
 
-### <a name='Reliability'></a>Reliability
+### Reliability
 
 Reliability is the degree to which code functions correctly and consistently under
 expected conditions. Reliable code is robust and handles edge cases, errors, and
@@ -212,7 +207,7 @@ or services interact correctly.
 - **Input Validation**: Always validate inputs to ensure they meet the expected
 criteria before processing.
 
-### <a name='Efficiency'></a>Efficiency
+### Efficiency
 
 Efficiency refers to the optimization of code in terms of performance and resource
 utilization. Efficient code executes quickly and uses minimal resources, such as
@@ -235,13 +230,13 @@ the need for repeated computations or database queries.
 - **Profiling and Optimization**: Regularly profile the application to identify
 and optimize performance bottlenecks.
 
-## <a name='CoreProgrammingConcepts'></a>Core Programming Concepts
+## Core Programming Concepts
 
-### <a name='solid-principles'></a>SOLID Principles
+### SOLID Principles
 
 TBD
 
-### <a name='Component-basedArchitecture'></a>Component-based Architecture
+### Component-based Architecture
 
 Think of a component as a Lego block.
 
@@ -261,14 +256,14 @@ Software components have five common characteristics;
 5. **Independence**: Components have minimal dependencies on other components and can operate in different environments and contexts.
 
 
-## <a name='GeneralPrinciple'></a>General Principle
+## General Guidelines
 
-### <a name='FileNaming'></a>File Naming
+### File Naming
 
 - Use `kebab-case` for file names
 - Use `LF` instead of ~~`CRLF`~~ for line ending
 
-### <a name='directory-structure'></a>Directory Structure
+### Directory Structure
 
 - Directory name should already convey the files within.
 
@@ -302,7 +297,7 @@ Some common directory names specifically for web applications are:
   - **src/store**: contains the application store
   - **src/utils**: contains the application utils
 
-### <a name='VariableandFunctionNaming'></a>Variable and Function Naming
+### Variable and Function Naming
 
 1. **Readable and Searchable Names**
    - Use clear, descriptive names that make the code easy to understand and maintain.
@@ -334,7 +329,7 @@ Some common directory names specifically for web applications are:
    - Do not use JavaScript reserved words for variable names (e.g., `class`, `enum`, `default`).
 
 
-### <a name='FunctionorMethodBestPractices'></a>Function or Method Best Practices
+### Function or Method Best Practices
 
 - A function or method should do ONE thing, and ONE thing only.
 
@@ -379,12 +374,12 @@ Some common directory names specifically for web applications are:
      const [_firstColor, secondColor, _thirdColor] = colors
      ```
 
-## <a name='RESTfulAPI'></a>RESTful API
+## RESTful API
 
 Please refer to [Rapid API Learning](https://rapidapi.com/learn/rest) for
 comprehensive information about RESTful API.
 
-## <a name='FormattingandStyling'></a>Formatting and Styling
+## Formatting and Styling
 
 Formatting and styling should be done automatically using linter. See Tooling
 section for more information how to set it up.
@@ -394,23 +389,38 @@ section for more information how to set it up.
 - Add a new line before `return` statement.
 - Add an empty line before the end of file. Use `LF` for file ending.
 
-## <a name='ECMAScript6ES6orJavascriptandNodejs'></a>ECMA Script 6 (ES6) or Javascript and Nodejs
+## TypeScript, ECMA Script 6 (ES6) or Javascript and Nodejs
 
-### <a name='Path'></a>Path
+Follow the [antfu eslint config](https://eslint-config.antfu.me/rules) rules as convention.
+
+### Path Naming
 
 - Use relative path when related to browser so it can be imported using
-  either npm, cdn link or importmap.
-- Include file extension on file path when import a file, unless to an `index.js`<br>
+  either npm, cdn link or importmap.<br>
+  `import { formatDate } from '../utils/format-date.js'`
+- Include file extension on file path when importing a file, unless importing an `index.js` file<br>
   `import { formatDate } from 'src/utils/format-date.js'`<br>
   `import { formatDate } from 'src/utils   // utils directory has index.js`
 
-## <a name='VuejsIncludesHTMLandCSS'></a>Vuejs (Includes HTML and CSS)
+## Vuejs (Including HTML and CSS)
 
-Tailwindcss principles and style guides:
+Follow the Tailwindcss principles and style guides:
 
 - [eslint-plugin-better-tailwindcss](https://github.com/schoero/eslint-plugin-better-tailwindcss)
 
-## <a name='ToolingIDEExtensionsandConfigurations'></a>Tooling, IDE Extensions and Configurations
+## Commit Message Guidelines
+
+Follow [conventional commit](https://www.conventionalcommits.org) to write commit message. The advantage is that we can use tools like [changelogithub](https://github.com/antfu/changelogithub) to generate changelog based on commit messages.
+
+
+## Software Versioning and Version Control
+
+Follow the conventional versioning systems:
+
+- [Semantic Versioning](https://semver.org)
+- [Calendar Versioning](https://calver.org)
+
+## Tooling, IDE Extensions and Configurations
 
 Currently I'm using [eslint](https://eslint.org) (without Prettier) to lint and format my code following the antfu/eslint-config configuration. Folowing the link below for more information.
 
@@ -418,7 +428,7 @@ Currently I'm using [eslint](https://eslint.org) (without Prettier) to lint and 
 
 By using pre-commit hooks, we can automatically lint and guard our code from code smells before committing. Currently using [simple-git-hooks](https://github.com/indrajeetmishra/simple-git-hooks).
 
-### <a name='SettingUpLinter'></a>Setting Up Linter and Formatter
+### Setting Up Linter and Formatter
 
 - Install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) for vscode.
 - Install the `@commitlint/cli` and `@commitlint/config-conventional` packages.
@@ -434,17 +444,9 @@ By using pre-commit hooks, we can automatically lint and guard our code from cod
     "commit-msg": "npm run commitlint --edit ${1}"
   }
   ```
+  
 
-## <a name='VersionControl'></a>Software Versioning and Version Control
-
-Follow the conventional versioning systems:
-
-- [Semantic Versioning](https://semver.org)
-- [Calendar Versioning](https://calver.org)
-
-Use [conventional commit](https://www.conventionalcommits.org) to write commit message. The advantage is that we can use tools like [changelogithub](https://github.com/antfu/changelogithub) to generate changelog based on commit messages.
-
-## <a name='Conclusion'></a>Conclusion
+## Conclusion
 
 Adopting and consistently applying coding conventions, standards, and guidelines has been crucial for me in maintaining high-quality, maintainable codebases. Through establishing clear rules for code style, architecture, documentation, and version control, I've found that it helps me to:
 
@@ -458,7 +460,7 @@ These guidelines represent my current best practices, but I recognize they shoul
 
 By following these practices, I've been able to create more maintainable, efficient, and professional software projects.
 
-## <a name='FurtherReadingsandReferrences'></a>Further Readings and Referrences
+## Further Readings and Referrences
 
 - https://en.wikipedia.org/wiki/Coding_conventions
 - https://github.com/ryanmcdermott/clean-code-javascript
@@ -466,6 +468,7 @@ By following these practices, I've been able to create more maintainable, effici
 - https://github.com/antfu/eslint-config
 - https://eslint.org/
 - https://conventionalcommits.org/
+- https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines
 - https://semver.org/
 - https://keepachangelog.com/
 - https://rapidapi.com/learn/rest
